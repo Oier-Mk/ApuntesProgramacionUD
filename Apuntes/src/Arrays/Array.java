@@ -6,7 +6,7 @@ package Arrays;
 //int[] mi_matriz = new int[10];
 //Inicialización
 //mi_matriz[0] = 15;
-//mi_mariz[1] = 25;
+//mi_mariz[1] = 25; 
 //mi_mariz[2] = 8; 
 //mi_mariz[3] = -7;
 //mi_mariz[4] = 92;
