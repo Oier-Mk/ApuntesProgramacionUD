@@ -41,10 +41,12 @@ public class VentanaConfirmacionLenta {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				b.setEnabled(false);
 				(new Thread() {
 					public void run() {
 						System.out.println("antes de confirmar");
 						procesoConfirmar(); 
+						b.setEnabled(true);
 						System.out.println("despues de confirmar");
 					}
 				}).start();
