@@ -5,7 +5,6 @@ import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -29,16 +28,18 @@ inferiores:
 public class ventanaAleatoria extends JFrame{
 
 	private static final long serialVersionUID = 1L;
+	@SuppressWarnings("rawtypes")
+	public JComboBox cbOpciones;    
 	public String[] cabecera;
 	public Object[][] tabla;
 	public JTable t;
 	public String opciones[] = {"2x2","3x3","4x4","5x5"}; 
-	public JComboBox cbOpciones = new JComboBox(opciones);    
-	public JPanel p = new JPanel();
-	public JPanel panelTabla = new JPanel();
-	public JPanel panelCombo = new JPanel();
-	public JButton aleatorio = new JButton("“¡Aleatorio!”");
-	Random r = new Random();
+	public JPanel p;
+	public JPanel panelTabla;
+	public JPanel panelCombo;
+	public JButton aleatorio;
+	public JLabel explicacion;
+	public Random r = new Random();
 
 
 	public static void main(String[] args) {
@@ -46,26 +47,30 @@ public class ventanaAleatoria extends JFrame{
 		v.setVisible(true);
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public ventanaAleatoria() {
 		setSize(500, 500);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
+		p = new JPanel();
 		p.setLayout(new BorderLayout());
 		add(p);
 
+		panelTabla = new JPanel();
 		panelTabla.setLayout(new GridBagLayout());;
-		//		panelTabla.setBackground(Color.green);
 		p.add(panelTabla, BorderLayout.CENTER);
 
-		//		panelCombo.setBackground(Color.blue);
+		panelCombo = new JPanel();
 		p.add(panelCombo, BorderLayout.SOUTH);
 
-		JLabel explicacion = new JLabel("Selecciona la opción de tabla mas adecuada");
+		explicacion = new JLabel("Selecciona la opción de tabla mas adecuada");
 		panelCombo.add(explicacion);
 
+		cbOpciones = new JComboBox(opciones);
 		panelCombo.add(cbOpciones);
 
+		aleatorio = new JButton("“¡Aleatorio!”");
 		panelCombo.add(aleatorio);
 
 		aleatorio.addActionListener(new ActionListener() {
@@ -137,6 +142,7 @@ public class ventanaAleatoria extends JFrame{
 				).start();
 	}
 
+	@SuppressWarnings("unused")
 	private void comprobacion() {
 		System.out.println("\n"+cbOpciones.getSelectedItem()+"\n");
 		for (int i = 0; i<tabla.length; i++) {
