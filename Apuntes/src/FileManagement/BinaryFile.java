@@ -14,7 +14,7 @@ public class BinaryFile {
 	public static void main(String[] args) {
 		newFile = new BinaryFile();
 
-		SavedData = "FileManagement/BinaryData.dat";
+		SavedData = "src/FileManagement/BinaryData.dat";
 
 		File data = new File(SavedData);
 

@@ -1,4 +1,4 @@
-package EjerciciosDeClase;
+package JVLC;
 
 import java.awt.*;
 import java.awt.event.*;
