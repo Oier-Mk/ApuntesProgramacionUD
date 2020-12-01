@@ -1,7 +1,7 @@
 package Library;
 
 public class Counter {
-	private int c = 0;
+	private int c = 1;
 	public Counter() {}
 	
 	public int getCounter() {
