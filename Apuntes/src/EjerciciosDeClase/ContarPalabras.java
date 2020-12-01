@@ -25,7 +25,7 @@ public class ContarPalabras {
 				System.out.println("palabra nula");
 				map.put(palabra, new Counter());
 			}else{
-				System.out.println("palabra existente");
+				System.out.println("palabra existente"); 
 				map.get(palabra).inc();
 			}
 			contarPalabras(file);
