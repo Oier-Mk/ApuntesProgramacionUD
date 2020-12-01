@@ -1,42 +1,17 @@
 package Prueba;
 
-
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
-@SuppressWarnings("serial")
-public class Prueba extends JPanel {
-	
-	public Prueba() {
-		KeyListener listener = new MyKeyListener();
-		addKeyListener(listener);
-		setFocusable(true);
-	}
-	
+public class Prueba{
 	public static void main(String[] args) {
-		JFrame frame = new JFrame("Mini Tennis");
-		Prueba keyboardExample = new Prueba();
-		frame.add(keyboardExample);
-		frame.setSize(200, 200);
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		System.out.println(f(5));
+		System.out.println(combinatoria(90,5));
+	}	 
+	static int combinatoria(int a, int b){
+		return (f(a)/(f(b)*f(a-b)));
 	}
-
-	public class MyKeyListener implements KeyListener {
-		@Override
-		public void keyTyped(KeyEvent e) {
-		}
-
-		@Override
-		public void keyPressed(KeyEvent e) {
-			System.out.println("keyPressed="+(e.getKeyCode()));
-		}
-
-		@Override
-		public void keyReleased(KeyEvent e) {
-			System.out.println("keyReleased="+KeyEvent.getKeyText(e.getKeyCode()));
+	static int f(int n) {
+		if(n==0)return 1;
+		else {
+			return n*f(n-1);
 		}
 	}
 }

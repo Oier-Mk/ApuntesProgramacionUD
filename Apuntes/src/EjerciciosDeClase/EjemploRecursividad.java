@@ -16,8 +16,28 @@ public class EjemploRecursividad {
 		// hanoi( 4, 'a', 'c', 'b' );
 		// comb1( 5, "" ); // Comb de 3 caracteres A o B
 		// comb2( 5, "" ); // Comb de 3 caracteres A o B o C
-		comb3( 5, new char[] { 'a', 'b', 'c', 'd' }, "" );
-		System.out.println( cont );
+		// comb3( 5, new char[] { 'a', 'b', 'c', 'd' }, "" );
+		// System.out.println( cont );
+		combinaciones(new char[] {'a','b','c'} ,  10);
+		System.out.println(cont);
+	}
+
+
+	public static void combinaciones(char[] array, int n){
+		combinaciones1(array,"", n);
+	}
+	//SACA TODAS LAS CADENAS DE A Y B DE LONGITUD N
+	//AÑADIR A LA CADENA PREVIA A Y SACAR TODAS LAS CADENAS DE LONGITUD N-1
+	//CASO BASE SI N == 0, SACANDO A CONSOLA LA CADENA
+	private static void combinaciones1(char[] array ,String string, int n){
+		cont++;
+		if (n==0) System.out.println(string);
+		else {
+			for(int i = 0 ; i < array.length; i++) {
+				combinaciones1(array, string + array[i] , n-1);
+			}
+		}
+
 	}
 
 	private static void comb3( int n, char[] cars, String combinacion ) {
@@ -30,7 +50,7 @@ public class EjemploRecursividad {
 			}
 		}
 	}
-	
+
 	private static void comb2( int n, String combinacion ) {
 		cont++;
 		if (n==0) {
@@ -41,8 +61,8 @@ public class EjemploRecursividad {
 			comb2( n-1, combinacion + "C" );
 		}
 	}
-	
-	
+
+
 	private static int cont=0;
 	// comb1 N caracteres A y B =
 	//    cadena A + todas las cadenas de N-1 caracteres de A y B
@@ -58,10 +78,10 @@ public class EjemploRecursividad {
 			comb1( n-1, combinacion + "B" );
 		}
 	}
-	
-	
-	
-	
+
+
+
+
 	// Resolver torre de hanoi de tamaño N de varilla o -> d, auxiliar a
 	// - Resolver torre N-1 o -> a, aux d
 	// - Mover disco N o -> d
@@ -75,8 +95,8 @@ public class EjemploRecursividad {
 			hanoi( n-1, auxiliar, destino, origen );
 		}
 	}
-	
-		
+
+
 	/** Calcula y devuelve el número fibonacci correspondiente
 	 * fib(n) = fib(n-1) + fib(n-2), siendo fib(1)=1 y fib(2)=1
 	 * @param n	Valor de fibonacci. Debe ser n>=1
@@ -91,7 +111,7 @@ public class EjemploRecursividad {
 			return fib(n-1) + fib(n-2);
 		}
 	}
-	
+
 	public static void envoltoriofactorial( int n ) {
 		factorial( n, 0, 1 );
 	}
@@ -103,7 +123,7 @@ public class EjemploRecursividad {
 			factorial( objetivo, num+1, siguiente );
 		}
 	}
-	
+
 	private static void factorial2(int objetivo, int valor) {
 		if (objetivo==0) {
 			System.out.println( valor );
@@ -112,7 +132,7 @@ public class EjemploRecursividad {
 			factorial2( objetivo-1, siguiente );
 		}
 	}
-	
+
 	// f(n) = n * f(n-1)  si n>=1   y f(n) = 1 si n==0
 	// NO SE DEBE LLAMAR CON < 0 
 	private static int factorial3( int n ) {
@@ -122,9 +142,9 @@ public class EjemploRecursividad {
 			return n * factorial3( n-1 );
 		}
 	}
-	
-	
-	
+
+
+
 	// Método que visualiza de num hasta 1000
 	private static void visuHastaMil( int num ) {
 		// Sentencias previas a la llamada
@@ -134,7 +154,7 @@ public class EjemploRecursividad {
 		// Sentencias posteriores a la llamada
 		System.out.println( num );
 	}
-	
+
 	private static void visuParesDescHasta2( int num ) {
 		if (num>2) {
 			// Ocurre n veces al derecho
@@ -146,5 +166,5 @@ public class EjemploRecursividad {
 			System.out.println( 2 );
 		}
 	}
-	
+
 }
