@@ -1,6 +1,6 @@
 package EjerciciosDeClase;
 
-public class AquilesYLaTortugaResuelto {
+public class AquilesYLaTortuga {
 	
 	public static final double VEL_AQUILES = 10;   // metros / sg
 	public static final double VEL_TORTUGA = 0.05; // m/sg (0.05m/sg = 1 metro cada 20 segs) 
@@ -25,19 +25,13 @@ public class AquilesYLaTortugaResuelto {
 	}
 	
 	// Algoritmo recursivo
-	// tIni es un tiempo en el que Aquiles todavía no ha alcanzado a la tortuga
-	// tFin es un tiempo en el que Aquiles ha pasado a la tortuga
-	public static double cuandoSeEncuentran( double tIni, double tFin ) {
+	public static double cuandoSeEncuentran(double tIni, double tFin) {
 		numLlams++; // Auxiliar para contar el número de llamadas
 		if (Math.abs(tIni-tFin) < 0.001) {
 			return tIni;
 		} else {
 			double tMedio = (tIni+tFin)/2;
-			double sAquiles = dondeEstaAquiles( tMedio );
-			double sTortuga = dondeEstaLaTortuga( tMedio );
-			System.out.println( tIni + "," + tFin );
-			System.out.println( "   " + sAquiles + "," + sTortuga );
-			if (sAquiles <= sTortuga) {
+			if (dondeEstaAquiles( tMedio ) <= dondeEstaLaTortuga( tMedio )) {
 				return cuandoSeEncuentran( tMedio , tFin );
 			} else {
 				return cuandoSeEncuentran( tIni, tMedio );
@@ -47,16 +41,10 @@ public class AquilesYLaTortugaResuelto {
 	
 	private static int numLlams = 0;
 	public static void main(String[] args) {
-		double t = 50000;
-//		System.out.println( "Ejemplo. Tiempo = " + t + " segundos" );
-//		System.out.println( " Aquiles está en " + dondeEstaAquiles(t));
-//		System.out.println( " La tortuga está en " + dondeEstaLaTortuga(t));
-//		System.out.println( "Solución:" );
+		double t = 500000000;  // Tiempo de prueba
 		try {
-			double tSol = cuandoSeEncuentran( 0.0, t );
-			System.out.println( "Tiempo de encuentro = " + tSol );
-			System.out.println( "  Distancia de encuentro = " + dondeEstaAquiles(tSol));
-			System.out.println( "Número de llamadas: " + numLlams );
+			System.out.println( "Solución:" + cuandoSeEncuentran(0,t));
+			System.out.println(numLlams);
 		} catch (StackOverflowError e) {
 			System.out.println( "Stack overflow!! " + numLlams );
 		}

@@ -11,7 +11,7 @@ import Library.Counter;
 public class ContarPalabras {
 	static HashMap<String, Counter> map = new HashMap<String, Counter>();
 	public static void main(String[] args) {
-		try {	contarPalabras(new Scanner(new FileInputStream( new File("src/EjerciciosDeClase/DonQuijote.txt"))));   } catch (FileNotFoundException e) {   e.printStackTrace();	}
+		try {	contarPalabras(new Scanner(new FileInputStream( new File("src/EjerciciosDeClase/texto.txt"))));   } catch (FileNotFoundException e) {   e.printStackTrace();	}
 	}
 
 	private static void contarPalabras(Scanner file) {
