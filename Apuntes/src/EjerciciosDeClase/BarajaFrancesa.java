@@ -1,35 +1,35 @@
 package EjerciciosDeClase;
 import java.util.ArrayList;
 
-/*
-T4. Recursividad [2,5] [T4Ext.java, 30 líneas] Crea una baraja francesa de la siguiente forma:
+
+//T4. Recursividad [2,5] [T4Ext.java, 30 líneas] Crea una baraja francesa de la siguiente forma:
 // Crear baraja
-ArrayList<String> baraja = new ArrayList<>();
-for (int carta=1; carta<=10; carta++) {
-for (int palo=1; palo<=4; palo++) {
-baraja.add( "" + carta );
-}
-}
-for (int palo=1; palo<=4; palo++) {
-baraja.add( "J" );
-baraja.add( "Q" );
-baraja.add( "K" );
-}
-La baraja entonces es una lista de 52 strings donde cada valor es una carta (del 1 al 10, J, Q o K) y hay 4
-cartas iguales de cada.
-Programa un método recursivo que cuente todas las combinaciones posibles de 4 cartas de esa baraja
-y muestre el conteo final. Además, comprueba con cada una de esas combinaciones si es o no poker (las
-4 cartas son iguales) y cuenta también el número de pokers. El programa finalmente debe visualizar esas
-dos informaciones:
-Hay 270725 combinaciones de las cuales 13 son pokers. 
- */
+//ArrayList<String> baraja = new ArrayList<>();
+//for (int carta=1; carta<=10; carta++) {
+//	for (int palo=1; palo<=4; palo++) {
+//		baraja.add( "" + carta );
+//	}
+//}
+//for (int palo=1; palo<=4; palo++) {
+//	baraja.add( "J" );
+//	baraja.add( "Q" );
+//	baraja.add( "K" );
+//}
+//La baraja entonces es una lista de 52 strings donde cada valor es una carta (del 1 al 10, J, Q o K) y hay 4
+//cartas iguales de cada.
+//Programa un método recursivo que cuente todas las combinaciones posibles de 4 cartas de esa baraja
+//y muestre el conteo final. Además, comprueba con cada una de esas combinaciones si es o no poker (las
+//4 cartas son iguales) y cuenta también el número de pokers. El programa finalmente debe visualizar esas
+//dos informaciones:
+//Hay 270725 combinaciones de las cuales 13 son pokers. 
+
 
 public class BarajaFrancesa {
 	public static void main(String[] args) {
 		ArrayList<String> baraja = new ArrayList<>();
 		crearBaraja(baraja);
 		System.out.println("size "+baraja.size());
-		//for (int i = 0; i<baraja.size();i++) System.out.println(baraja.get(i));
+		for (int i = 0; i<baraja.size();i++) System.out.println(baraja.get(i));
 
 		ArrayList<ArrayList<String>> combinaciones = combinacionesDeCartas(4,new ArrayList<>(),baraja,new ArrayList<>());
 		for (int i = 0; i<combinaciones.size();i++) {
@@ -64,12 +64,12 @@ public class BarajaFrancesa {
 		}
 	}
 	private static int encuentraSumas( int numSiguiente, int numMax, int sumaBuscada, int sumaAct, ArrayList<Integer> sumandos ) {
-			ArrayList<Integer> sumandos2 = new ArrayList<Integer>( sumandos );
-			sumandos2.add( numSiguiente );
-			return encuentraSumas( numSiguiente+1, numMax, sumaBuscada, sumaAct, sumandos ) +
-				   encuentraSumas( numSiguiente+1, numMax, sumaBuscada, sumaAct+numSiguiente, sumandos2 );
+		ArrayList<Integer> sumandos2 = new ArrayList<Integer>( sumandos );
+		sumandos2.add( numSiguiente );
+		return encuentraSumas( numSiguiente+1, numMax, sumaBuscada, sumaAct, sumandos ) +
+				encuentraSumas( numSiguiente+1, numMax, sumaBuscada, sumaAct+numSiguiente, sumandos2 );
 	} 
-	
+
 	private static void crearBaraja(ArrayList<String> arr) {
 		if (arr.size()==52) {
 			System.out.println("Caso base "+arr.size());
